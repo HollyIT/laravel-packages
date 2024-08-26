@@ -1,0 +1,37 @@
+{
+    "name": "hollyit/laratus",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Hollyit\\Laratus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jamie Holly",
+            "email": "jamie@webwizardsusa.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
+        "ext-json": "*",
+        "composer/semver": "^3.4",
+        "illuminate/bus": "^10.0|^11.0",
+        "illuminate/conditionable": "^10.0|^11.0",
+        "illuminate/console": "^10.0|^11.0",
+        "illuminate/database": "^10.0|^11.0",
+        "illuminate/pipeline": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "ankitpokhrel/tus-php": "^2.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hollyit\\Laratus\\LaratusServiceProvider"
+            ]
+        }
+    }
+}
