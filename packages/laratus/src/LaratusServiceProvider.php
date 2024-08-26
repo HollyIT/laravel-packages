@@ -27,4 +27,11 @@ class LaratusServiceProvider extends ServiceProvider
             return app($options['driver'], Arr::get($options,'options', []));
         });
     }
+
+    public function boot(): void
+    {
+        if (LaratusServer::$shouldRegisterRoutes) {
+            $this->loadRoutesFrom(__DIR__.'/../routes/tus.php');
+        }
+    }
 }

@@ -9,7 +9,7 @@ use Hollyit\Laratus\LaratusServer;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'middleware' => [],
+    'middleware' => Hollyit\Laratus\LaratusServer::getMiddleware(),
     'prefix' => config('laratus.route_prefix', 'tus'),
     'as' => 'tus.',
 ], function () {
@@ -33,7 +33,5 @@ Route::group([
     })
         ->where('any', '.*')
         ->name('fallback');
-
-
 
 });
