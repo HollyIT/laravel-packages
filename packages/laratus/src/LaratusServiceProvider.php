@@ -3,6 +3,7 @@
 namespace Hollyit\Laratus;
 
 use Hollyit\Laratus\Contracts\TusStorageDriver;
+use Illuminate\Cache\Repository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,26 +13,22 @@ class LaratusServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laratus.php', 'laratus');
-        $this->loadRoutesFrom(__DIR__.'/../routes/tus.php');
-        $this->app->singleton(TusStorageDriver::class, function ($app) {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/laratus.php');
 
-            $options = config('laratus.storage');
-            if (!isset($options['driver'])) {
-                throw new \Exception('Tus storage driver not specified');
-            }
+        $this->app->when(TusCacheRepository::class)
+            ->needs(Repository::class)
+            ->give(function (): Repository {
+                return app('cache')->store(config('laratus.cache_store', 'file'));
+            });
 
-            if (!class_exists($options['driver'])) {
-                throw new \Exception('Tus storage driver does not exist');
-            }
 
-            return app($options['driver'], Arr::get($options,'options', []));
-        });
+
     }
 
     public function boot(): void
     {
-        if (LaratusServer::$shouldRegisterRoutes) {
-            $this->loadRoutesFrom(__DIR__.'/../routes/tus.php');
+        if (Server::$shouldRegisterRoutes) {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/laratus.php');
         }
     }
 }
