@@ -22,12 +22,12 @@ require __DIR__.'/auth.php';
 Route::group([
     'prefix' => 'tus-demo',
     'as' => 'tus.',
-], function(){
-   Route::get('/', function(){
-       return view('tus.basic');
-   })->name('basic');
+], function () {
+    Route::get('/', function () {
+        return view('tus.basic');
+    })->name('basic');
 
-    Route::get('/livewire', function(){
+    Route::get('/livewire', function () {
         return view('tus.basic');
     })->name('livewire');
 });

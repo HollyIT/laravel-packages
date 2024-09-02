@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class LaratusPostController extends LaratusController
 {
-
-    public function __invoke(Request $request, Server $server) {
+    public function __invoke(Request $request, Server $server)
+    {
         return $server->handlePost();
     }
 }

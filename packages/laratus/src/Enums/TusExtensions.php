@@ -2,7 +2,4 @@
 
 namespace Hollyit\Laratus\Enums;
 
-enum TusExtensions: string
-{
-
-}
+enum TusExtensions: string {}

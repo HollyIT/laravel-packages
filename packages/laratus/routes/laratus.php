@@ -1,9 +1,6 @@
 <?php
 
-use Hollyit\Laratus\Http\Controllers\LaratusDeleteController;
-use Hollyit\Laratus\Http\Controllers\LaratusHeadController;
 use Hollyit\Laratus\Http\Controllers\LaratusOptionsController;
-use Hollyit\Laratus\Http\Controllers\LaratusPatchController;
 use Hollyit\Laratus\Http\Controllers\LaratusPostController;
 use Hollyit\Laratus\Server;
 use Illuminate\Support\Facades\Route;
@@ -19,17 +16,17 @@ Route::group([
     Route::post('/', LaratusPostController::class)
         ->name('post');
 
-//    Route::patch('/{laratus_id}', Server::class)
-//        ->name('patch');
-//
-//    Route::delete('/{laratus_id}', Server::class)
-//        ->name('delete');
-//
-//    Route::match('head', '/{laratus_id}', Server::class)
-//        ->name('head');
+    //    Route::patch('/{laratus_id}', Server::class)
+    //        ->name('patch');
+    //
+    //    Route::delete('/{laratus_id}', Server::class)
+    //        ->name('delete');
+    //
+    //    Route::match('head', '/{laratus_id}', Server::class)
+    //        ->name('head');
 
     Route::any('{any?}', function () {
-            return response()->noContent(485);
+        return response()->noContent(485);
     })
         ->where('any', '.*')
         ->name('fallback');

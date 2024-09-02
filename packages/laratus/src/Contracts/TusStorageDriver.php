@@ -2,7 +2,4 @@
 
 namespace Hollyit\Laratus\Contracts;
 
-interface TusStorageDriver
-{
-
-}
+interface TusStorageDriver {}

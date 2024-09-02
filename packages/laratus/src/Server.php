@@ -10,13 +10,12 @@ use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class Server
 {
-
     public const TUS_PROTOCOL_VERSION = '1.0.0';
+
     /**
      * @var Request
      */
     protected mixed $request;
-
 
     public static bool $shouldRegisterRoutes = true;
 
@@ -30,6 +29,7 @@ class Server
     ];
 
     protected int $maximumUploadSize;
+
     protected TusCacheRepository $cache;
 
     public function __construct(TusCacheRepository $cache, ?Request $request)
@@ -58,9 +58,9 @@ class Server
     public function setMaximumUploadSize(int $maximumUploadSize): static
     {
         $this->maximumUploadSize = Filesize::convertToBytes($maximumUploadSize);
+
         return $this;
     }
-
 
     public function allowedExtensions(): array
     {
@@ -73,12 +73,11 @@ class Server
         ]);
     }
 
-
     public function maxChunkSize(): int
     {
         $sizes = [
             Filesize::convertToBytes(ini_get('post_max_size')),
-            Filesize::convertToBytes(ini_get('post_max_size'))
+            Filesize::convertToBytes(ini_get('post_max_size')),
         ];
 
         if ($configured = config('laratus.max_chunk_size')) {
@@ -90,8 +89,6 @@ class Server
 
     /**
      * Get list of supported hash algorithms.
-     *
-     * @return string
      */
     protected function getSupportedHashAlgorithms(): string
     {
@@ -121,13 +118,12 @@ class Server
 
         $checksum = base64_decode($checksum);
 
-        if (false === $checksum || !in_array($checksumAlgorithm, hash_algos(), true)) {
+        if ($checksum === false || ! in_array($checksumAlgorithm, hash_algos(), true)) {
             return response()->noContent(HttpResponse::HTTP_BAD_REQUEST);
         }
 
         return $checksum;
     }
-
 
     public function handleOptions(): Response
     {
@@ -141,7 +137,6 @@ class Server
         if ($this->maximumUploadSize > 0) {
             $headers['Tus-Max-Size'] = $this->maximumUploadSize;
         }
-
 
         return response()->noContent(HttpResponse::HTTP_OK, $headers);
     }
@@ -161,27 +156,13 @@ class Server
         return true;
     }
 
+    protected function makeKey(): string {}
 
-    protected function makeKey(): string {
+    public function handlePost() {}
 
-    }
-    public function handlePost()
-    {
+    public function handlePatch() {}
 
-    }
+    public function handleDelete() {}
 
-    public function handlePatch()
-    {
-
-    }
-
-    public function handleDelete()
-    {
-
-    }
-
-    public function handleHead()
-    {
-
-    }
+    public function handleHead() {}
 }

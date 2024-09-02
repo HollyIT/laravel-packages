@@ -7,7 +7,7 @@ class Filesize
     public static function convertToBytes($size): int
     {
         $suffix = strtoupper(substr($size, -1));
-        $value = (int)$size;
+        $value = (int) $size;
 
         switch ($suffix) {
             case 'G':
@@ -20,5 +20,4 @@ class Filesize
 
         return $value;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'route_prefix' => env('LARATUS_ROUTE_PREFIX', 'tus'),
     'middleware' => [
@@ -12,7 +13,7 @@ return [
     ],
     'upload_disk' => env('LARATUS_TEMP_DISK', 'local'),
     'upload_path' => env('LARATUS_TEMP_PATH', 'tus-uploads'),
-    'cache_store' =>  env('LARATUS_CACHE_STORE', env('CACHE_STORE', 'database')),
+    'cache_store' => env('LARATUS_CACHE_STORE', env('CACHE_STORE', 'database')),
     'max_size' => '500M',
     'max_chunk_size' => null,
     'extensions' => [
@@ -20,5 +21,5 @@ return [
         'termination',
         'checksum',
         'concatenation',
-    ]
+    ],
 ];

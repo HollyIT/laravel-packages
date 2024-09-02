@@ -6,12 +6,14 @@ use Hollyit\Laratus\Contracts\TusStorageDriver;
 
 class FileStorage implements TusStorageDriver
 {
-
     protected string $disk;
+
     protected string $path;
+
     protected int $ttl;
 
-    public function __construct(string $disk, string $path, int $ttl) {
+    public function __construct(string $disk, string $path, int $ttl)
+    {
 
         $this->disk = $disk;
         $this->path = $path;
@@ -26,19 +28,13 @@ class FileStorage implements TusStorageDriver
                 'disk' => $disk,
                 'path' => $path,
                 'ttl' => $ttl,
-            ]
+            ],
         ];
     }
 
-    public function get(string $key) {
+    public function get(string $key) {}
 
-    }
+    public function put(string $key, mixed $contents) {}
 
-    public function put(string $key, mixed $contents) {
-
-    }
-
-    public function destroy(string $key) {
-
-    }
+    public function destroy(string $key) {}
 }

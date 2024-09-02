@@ -2,7 +2,4 @@
 
 namespace Hollyit\Laratus\Http\Controllers;
 
-abstract class LaratusController
-{
-
-}
+abstract class LaratusController {}

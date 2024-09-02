@@ -6,8 +6,5 @@ use Illuminate\Http\Request;
 
 class LaratusHeadController extends LaratusController
 {
-
-    public function __invoke(Request $request) {
-
-    }
+    public function __invoke(Request $request) {}
 }
